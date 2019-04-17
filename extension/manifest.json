@@ -1,0 +1,47 @@
+{
+  "name": "__MSG_ExtensionName__",
+  "version": "42",
+  "manifest_version": 2,
+  "description": "__MSG_ExtensionDescription__",
+  "permissions": [
+    "cookies",
+    "http://*/*",
+    "https://*/*",
+    "management",
+    "pageCapture",
+    "privacy",
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "nativeMessaging"
+
+  ],
+  "background": {
+    "scripts": [
+      "content/scripts/background.js"
+    ],
+    "persistent": true
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*/*"
+      ],
+      "js": [
+        "content/contentScripts/content_script.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "css": []
+    }
+  ],
+  "homepage_url": "https://www.example.com/",
+  "default_locale": "en",
+  "author": ""
+}
